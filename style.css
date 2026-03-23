@@ -123,6 +123,8 @@ h1 {
   gap: 12px;
   justify-content: center;
   flex-wrap: wrap;
+  position: relative;
+  min-height: 70px;
 }
 
 button {
