@@ -82,11 +82,18 @@ function createMiniHearts(amount) {
   }
 }
 
-noBtn.addEventListener("mouseover", () => {
-  const x = Math.random() * 220 - 110;
-  const y = Math.random() * 120 - 60;
+function moveNoButton() {
+  const maxX = 100;
+  const maxY = 50;
+
+  const x = Math.random() * maxX - maxX / 2;
+  const y = Math.random() * maxY - maxY / 2;
+
   noBtn.style.transform = `translate(${x}px, ${y}px)`;
-});
+}
+
+noBtn.addEventListener("mouseover", moveNoButton);
+noBtn.addEventListener("touchstart", moveNoButton);
 
 noBtn.addEventListener("click", () => {
   responseEl.textContent = "Nee telt niet hoor 😜 Jij bent perfect 💕";
