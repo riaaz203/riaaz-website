@@ -146,6 +146,7 @@ button {
   background: white;
   color: #d93b74;
   border: 2px solid #ffc2d6;
+  position: relative;
 }
 
 button:hover {
