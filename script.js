@@ -34,17 +34,24 @@ const noBtn = document.getElementById("noBtn");
 const progressFill = document.getElementById("progressFill");
 const progressText = document.getElementById("progressText");
 const finalMessage = document.getElementById("finalMessage");
+const questionBox = document.getElementById("questionBox");
 
 function updateProgress() {
   const percent = ((currentQuestion + 1) / questions.length) * 100;
-  progressFill.style.width = percent + "%";
+  progressFill.style.width = `${percent}%`;
   progressText.textContent = `Vraag ${Math.min(currentQuestion + 1, questions.length)} van ${questions.length}`;
+}
+
+function animateQuestionBox() {
+  questionBox.classList.remove("fade-switch");
+  void questionBox.offsetWidth;
+  questionBox.classList.add("fade-switch");
 }
 
 function answerYes() {
   responseEl.textContent = questions[currentQuestion].yes;
   nextBtn.style.display = "inline-block";
-  createMiniHearts(8);
+  createMiniHearts(10);
 }
 
 function nextQuestion() {
@@ -55,40 +62,41 @@ function nextQuestion() {
     responseEl.textContent = "";
     nextBtn.style.display = "none";
     updateProgress();
+    animateQuestionBox();
   } else {
-    document.querySelector(".question-box").style.display = "none";
+    questionBox.style.display = "none";
     document.querySelector(".progress-wrap").style.display = "none";
     finalMessage.classList.remove("hidden");
-    createMiniHearts(20);
+    createMiniHearts(24);
   }
 }
 
 function showHearts() {
-  createMiniHearts(30);
+  createMiniHearts(35);
 }
 
 function createMiniHearts(amount) {
+  const hearts = ["💖", "💕", "💗", "💘", "💞"];
+
   for (let i = 0; i < amount; i++) {
     const heart = document.createElement("div");
     heart.className = "pop-heart";
-    heart.textContent = ["💖", "💕", "💗", "💘", "💞"][Math.floor(Math.random() * 5)];
-    heart.style.left = Math.random() * 100 + "vw";
-    heart.style.top = 60 + Math.random() * 25 + "vh";
+    heart.textContent = hearts[Math.floor(Math.random() * hearts.length)];
+    heart.style.left = `${Math.random() * 100}vw`;
+    heart.style.top = `${55 + Math.random() * 30}vh`;
+    heart.style.animationDelay = `${Math.random() * 0.3}s`;
+
     document.body.appendChild(heart);
 
     setTimeout(() => {
       heart.remove();
-    }, 2000);
+    }, 2200);
   }
 }
 
 function moveNoButton() {
-  const maxX = 100;
-  const maxY = 50;
-
-  const x = Math.random() * maxX - maxX / 2;
-  const y = Math.random() * maxY - maxY / 2;
-
+  const x = Math.random() * 140 - 70;
+  const y = Math.random() * 70 - 35;
   noBtn.style.transform = `translate(${x}px, ${y}px)`;
 }
 
@@ -100,17 +108,22 @@ noBtn.addEventListener("touchstart", (e) => {
 
 noBtn.addEventListener("click", () => {
   responseEl.textContent = "Nee telt niet hoor 😜 Jij bent perfect 💕";
-  createMiniHearts(5);
+  createMiniHearts(6);
 });
 
 function calculateDaysTogether() {
-  const startDate = new Date("2024-10-05");
+  const startDate = new Date("2024-10-05T00:00:00");
   const now = new Date();
   const diff = now - startDate;
-  const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-  document.getElementById("daysTogether").textContent =
-    `Jullie zijn al ${days} dagen samen 💞`;
+
+  const totalHours = Math.floor(diff / (1000 * 60 * 60));
+  const days = Math.floor(totalHours / 24);
+  const hours = totalHours % 24;
+
+  document.getElementById("daysTogether").textContent = `${days} dagen samen 💞`;
+  document.getElementById("extraTime").textContent = `${hours} uur extra liefde ✨`;
 }
 
 updateProgress();
 calculateDaysTogether();
+setInterval(calculateDaysTogether, 60000);
