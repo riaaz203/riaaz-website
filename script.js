@@ -94,7 +94,7 @@ noBtn.addEventListener("click", () => {
 });
 
 function calculateDaysTogether() {
-  const startDate = new Date("2024-01-01");
+  const startDate = new Date("2026-10-05");
   const now = new Date();
   const diff = now - startDate;
   const days = Math.floor(diff / (1000 * 60 * 60 * 24));
