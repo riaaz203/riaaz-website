@@ -2,27 +2,66 @@
 <html lang="nl">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Voor Jou ❤️</title>
-  <link rel="stylesheet" href="style.css"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Voor Mijn Liefde 💖</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
+  <div class="floating-hearts"></div>
 
   <main class="card">
-    <h1>Voor mijn liefste 💖</h1>
+    <p class="top-text">Speciaal gemaakt met liefde ❤️</p>
+    <h1>Voor mijn mooiste meisje 💕</h1>
+    <p class="subtitle">
+      Een kleine website, maar een grote herinnering aan hoeveel jij voor mij betekent.
+    </p>
 
-    <p id="question">Ben jij de mooiste persoon ooit? 😍</p>
-
-    <div class="buttons">
-      <button onclick="answerYes()">Ja 💕</button>
-      <button onclick="answerNo()">Nee 🙈</button>
+    <div class="photo-box">
+      <img
+        src="https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?auto=format&fit=crop&w=1200&q=80"
+        alt="Liefde"
+        class="photo"
+      />
     </div>
 
-    <p id="response"></p>
+    <div class="together-box">
+      <p>Samen sinds</p>
+      <h2 id="loveDate">01-01-2024</h2>
+      <p id="daysTogether">Jullie zijn al 0 dagen samen 💞</p>
+    </div>
 
-    <button id="nextBtn" onclick="nextQuestion()" style="display:none;">
-      Volgende vraag ➡️
-    </button>
+    <div class="progress-wrap">
+      <div class="progress-bar">
+        <div class="progress-fill" id="progressFill"></div>
+      </div>
+      <p class="progress-text" id="progressText">Vraag 1 van 6</p>
+    </div>
+
+    <section class="question-box">
+      <p id="question" class="question">Ben jij het mooiste wat mij ooit is overkomen? 😍</p>
+
+      <div class="buttons">
+        <button class="yes-btn" onclick="answerYes()">Ja natuurlijk 💖</button>
+        <button class="no-btn" id="noBtn">Nee 🙈</button>
+      </div>
+
+      <p id="response" class="response"></p>
+      <button id="nextBtn" class="next-btn" onclick="nextQuestion()">Volgende vraag ➜</button>
+    </section>
+
+    <section id="finalMessage" class="final-message hidden">
+      <h2>Mijn laatste boodschap voor jou 💌</h2>
+      <p>
+        Jij bent echt het allermooiste in mijn leven.
+        Elke dag met jou voelt specialer, warmer en gelukkiger.
+        Dankjewel dat jij bestaat, dat jij lacht, dat jij mij jouw liefde geeft.
+      </p>
+      <p>
+        Ik hou van jou. Niet een beetje. Niet soms.
+        Maar heel veel, elke dag opnieuw. ❤️
+      </p>
+      <button class="love-btn" onclick="showHearts()">Klik voor extra liefde 💘</button>
+    </section>
   </main>
 
   <script src="script.js"></script>
