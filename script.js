@@ -92,8 +92,11 @@ function moveNoButton() {
   noBtn.style.transform = `translate(${x}px, ${y}px)`;
 }
 
-noBtn.addEventListener("mouseover", moveNoButton);
-noBtn.addEventListener("touchstart", moveNoButton);
+noBtn.addEventListener("mouseenter", moveNoButton);
+noBtn.addEventListener("touchstart", (e) => {
+  e.preventDefault();
+  moveNoButton();
+});
 
 noBtn.addEventListener("click", () => {
   responseEl.textContent = "Nee telt niet hoor 😜 Jij bent perfect 💕";
