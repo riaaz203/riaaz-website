@@ -123,7 +123,10 @@ function calculateDaysTogether() {
   document.getElementById("daysTogether").textContent = `${days} dagen samen 💞`;
   document.getElementById("extraTime").textContent = `${hours} uur extra liefde ✨`;
 }
-
+document.body.addEventListener("click", () => {
+  const iframe = document.querySelector("iframe");
+  iframe.src += "&mute=0";
+}, { once: true });
 updateProgress();
 calculateDaysTogether();
 setInterval(calculateDaysTogether, 60000);
