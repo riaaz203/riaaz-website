@@ -101,3 +101,20 @@ button:hover {
     transform: translateY(-120vh);
   }
 }
+.buttons {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  margin-top: 15px;
+}
+
+#response {
+  margin-top: 15px;
+  font-size: 1.1rem;
+  color: #e75480;
+  min-height: 24px;
+}
+
+#nextBtn {
+  margin-top: 15px;
+}
